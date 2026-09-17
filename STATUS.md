@@ -10,6 +10,7 @@
 - Pages: `/about`, `/tools`, `/legal`
 - `robots.txt` allow, MIT license, unit tests for classifier + URL builder
 - No database, no auth, no API keys, no server-side query logs
+- Public GitHub repo: https://github.com/captnwalker/plainview (`main`)
 
 ## Stack note
 
@@ -25,15 +26,11 @@ v1 uses **TanStack Start** (Vite) instead of Next.js App Router. Reason: this wo
 
 ## GitHub / Vercel
 
-Attempted from this environment after the app ran. If `gh` / Vercel login is not already available, the local app is complete and the next human step is:
+GitHub is done: [captnwalker/plainview](https://github.com/captnwalker/plainview).
 
-```bash
-gh repo create captnwalker/plainview --public --source=. --remote=origin --push
-```
-
-Then on Vercel: Continue with GitHub and import `captnwalker/plainview`. No env vars.
+On Vercel: Continue with GitHub and import `captnwalker/plainview`. No env vars.
 
 ## Left for later
 
-- Human GitHub + Vercel login if this sandbox has no session
+- Vercel import of `captnwalker/plainview`
 - Optional: richer address parser, more name-variant engine, per-county assessor deep links

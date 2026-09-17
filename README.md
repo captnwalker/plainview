@@ -54,13 +54,10 @@ This repo uses TanStack Start rather than Next.js App Router so the existing Vit
 
 ## GitHub and Vercel
 
-Intended public repo: `captnwalker/plainview`.
+Public repo: [github.com/captnwalker/plainview](https://github.com/captnwalker/plainview).
 
-```bash
-gh repo create captnwalker/plainview --public --source=. --remote=origin --push
-```
+On Vercel: Import that GitHub repo with **Continue with GitHub**. No environment variables are required for v1.
 
-On Vercel: Import the GitHub repo with **Continue with GitHub**. No environment variables are required for v1.
 
 ## Legal scope
 
