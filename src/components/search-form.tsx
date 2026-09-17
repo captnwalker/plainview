@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { Search } from "lucide-react";
+import { ChevronDown, Search } from "lucide-react";
 import { classifyQuery } from "@/lib/classify.ts";
-import { compactSearch, EMPTY_FILTERS, type SearchFilters } from "@/lib/filters.ts";
+import { compactSearch, EMPTY_FILTERS, hasActiveFilters, type SearchFilters } from "@/lib/filters.ts";
 import { COUNTRIES, US_STATES } from "@/lib/us-states.ts";
 import { cn } from "@/lib/cn.ts";
 
@@ -30,10 +30,12 @@ export function SearchForm({
   const [filters, setFilters] = useState<SearchFilters>(initialFilters);
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const [filtersOpen, setFiltersOpen] = useState(() => hasActiveFilters(initialFilters));
 
   useEffect(() => {
     setQ(initialQuery);
     setFilters(initialFilters);
+    if (hasActiveFilters(initialFilters)) setFiltersOpen(true);
   }, [initialQuery, initialFilters]);
 
   useEffect(() => {
@@ -44,6 +46,7 @@ export function SearchForm({
   }, []);
 
   const classified = useMemo(() => classifyQuery(q, filters), [q, filters]);
+  const filterPanelId = `${variant === "hero" ? "plainview-q" : "plainview-q-inline"}-filters`;
 
   function onSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -105,82 +108,101 @@ export function SearchForm({
         {error ? <span className="text-danger">{error}</span> : q.trim() ? classified.label : "\u00a0"}
       </p>
 
-      <fieldset className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-        <legend className="sr-only">Optional filters</legend>
-        <FilterField label="Age min" htmlFor={`${inputId}-ageMin`}>
-          <input
-            id={`${inputId}-ageMin`}
-            inputMode="numeric"
-            min={0}
-            max={120}
-            value={filters.ageMin}
-            onChange={(e) => setFilters((f) => ({ ...f, ageMin: e.target.value.replace(/[^\d]/g, "") }))}
-            className="filter-input"
-            placeholder="18"
-          />
-        </FilterField>
-        <FilterField label="Age max" htmlFor={`${inputId}-ageMax`}>
-          <input
-            id={`${inputId}-ageMax`}
-            inputMode="numeric"
-            min={0}
-            max={120}
-            value={filters.ageMax}
-            onChange={(e) => setFilters((f) => ({ ...f, ageMax: e.target.value.replace(/[^\d]/g, "") }))}
-            className="filter-input"
-            placeholder="65"
-          />
-        </FilterField>
-        <FilterField label="City" htmlFor={`${inputId}-city`}>
-          <input
-            id={`${inputId}-city`}
-            value={filters.city}
-            onChange={(e) => setFilters((f) => ({ ...f, city: e.target.value }))}
-            className="filter-input"
-            placeholder="Fort Myers"
-            autoComplete="address-level2"
-          />
-        </FilterField>
-        <FilterField label="State" htmlFor={`${inputId}-state`}>
-          <select
-            id={`${inputId}-state`}
-            value={filters.state}
-            onChange={(e) => setFilters((f) => ({ ...f, state: e.target.value }))}
-            className="filter-input"
-          >
-            <option value="">—</option>
-            {US_STATES.map((s) => (
-              <option key={s.code} value={s.code}>
-                {s.code}
-              </option>
-            ))}
-          </select>
-        </FilterField>
-        <FilterField label="Country" htmlFor={`${inputId}-country`}>
-          <select
-            id={`${inputId}-country`}
-            value={filters.country}
-            onChange={(e) => setFilters((f) => ({ ...f, country: e.target.value }))}
-            className="filter-input"
-          >
-            {COUNTRIES.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </select>
-        </FilterField>
-        <FilterField label="Username hint" htmlFor={`${inputId}-username`}>
-          <input
-            id={`${inputId}-username`}
-            value={filters.username}
-            onChange={(e) => setFilters((f) => ({ ...f, username: e.target.value }))}
-            className="filter-input"
-            placeholder="@handle"
-            autoComplete="off"
-          />
-        </FilterField>
-      </fieldset>
+      <button
+        type="button"
+        className="mt-1 inline-flex h-11 items-center gap-1.5 text-sm text-ink-muted transition-colors duration-150 hover:text-ink"
+        aria-expanded={filtersOpen}
+        aria-controls={filterPanelId}
+        onClick={() => setFiltersOpen((open) => !open)}
+      >
+        <ChevronDown
+          className={cn("size-4 transition-transform duration-150", filtersOpen && "rotate-180")}
+          strokeWidth={1.75}
+        />
+        Additional filters
+        {hasActiveFilters(filters) && !filtersOpen ? (
+          <span className="text-ink-subtle">· in use</span>
+        ) : null}
+      </button>
+
+      {filtersOpen ? (
+        <fieldset id={filterPanelId} className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+          <legend className="sr-only">Additional filters</legend>
+          <FilterField label="Age min" htmlFor={`${inputId}-ageMin`}>
+            <input
+              id={`${inputId}-ageMin`}
+              inputMode="numeric"
+              min={0}
+              max={120}
+              value={filters.ageMin}
+              onChange={(e) => setFilters((f) => ({ ...f, ageMin: e.target.value.replace(/[^\d]/g, "") }))}
+              className="filter-input"
+              placeholder="18"
+            />
+          </FilterField>
+          <FilterField label="Age max" htmlFor={`${inputId}-ageMax`}>
+            <input
+              id={`${inputId}-ageMax`}
+              inputMode="numeric"
+              min={0}
+              max={120}
+              value={filters.ageMax}
+              onChange={(e) => setFilters((f) => ({ ...f, ageMax: e.target.value.replace(/[^\d]/g, "") }))}
+              className="filter-input"
+              placeholder="65"
+            />
+          </FilterField>
+          <FilterField label="City" htmlFor={`${inputId}-city`}>
+            <input
+              id={`${inputId}-city`}
+              value={filters.city}
+              onChange={(e) => setFilters((f) => ({ ...f, city: e.target.value }))}
+              className="filter-input"
+              placeholder="Fort Myers"
+              autoComplete="address-level2"
+            />
+          </FilterField>
+          <FilterField label="State" htmlFor={`${inputId}-state`}>
+            <select
+              id={`${inputId}-state`}
+              value={filters.state}
+              onChange={(e) => setFilters((f) => ({ ...f, state: e.target.value }))}
+              className="filter-input"
+            >
+              <option value="">—</option>
+              {US_STATES.map((s) => (
+                <option key={s.code} value={s.code}>
+                  {s.code}
+                </option>
+              ))}
+            </select>
+          </FilterField>
+          <FilterField label="Country" htmlFor={`${inputId}-country`}>
+            <select
+              id={`${inputId}-country`}
+              value={filters.country}
+              onChange={(e) => setFilters((f) => ({ ...f, country: e.target.value }))}
+              className="filter-input"
+            >
+              {COUNTRIES.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
+          </FilterField>
+          <FilterField label="Username hint" htmlFor={`${inputId}-username`}>
+            <input
+              id={`${inputId}-username`}
+              value={filters.username}
+              onChange={(e) => setFilters((f) => ({ ...f, username: e.target.value }))}
+              className="filter-input"
+              placeholder="@handle"
+              autoComplete="off"
+            />
+          </FilterField>
+        </fieldset>
+      ) : null}
     </form>
   );
 }

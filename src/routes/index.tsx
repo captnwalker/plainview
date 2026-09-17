@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ViewfinderMark, Wordmark } from "@/components/logo.tsx";
+import { BrandMark, Wordmark } from "@/components/logo.tsx";
 import { SearchForm } from "@/components/search-form.tsx";
-import { rememberSearch, readRecentSearches, type RecentSearch } from "@/lib/history.ts";
+import { rememberSearch, readRecentSearches, clearRecentSearches, type RecentSearch } from "@/lib/history.ts";
 import { compactSearch } from "@/lib/filters.ts";
 import { APP_ONE_LINE, APP_TAGLINE } from "@/lib/legal.ts";
 
@@ -15,10 +15,15 @@ function Home() {
     setRecent(readRecentSearches());
   }, []);
 
+  function onClearRecent() {
+    clearRecentSearches();
+    setRecent([]);
+  }
+
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-4 py-12 sm:py-20">
       <div className="flex flex-col items-center text-center">
-        <ViewfinderMark className="size-16 text-ink sm:size-20" />
+        <BrandMark className="mx-auto size-20 sm:size-24" />
         <h1 className="mt-5">
           <Wordmark className="text-4xl sm:text-5xl" />
         </h1>
@@ -30,7 +35,16 @@ function Home() {
       </div>
       {recent.length > 0 ? (
         <section className="mt-8" aria-label="Recent searches on this browser">
-          <h2 className="text-xs font-medium uppercase tracking-wide text-ink-subtle">Recent on this browser</h2>
+          <div className="flex items-center justify-between gap-3">
+            <h2 className="text-xs font-medium uppercase tracking-wide text-ink-subtle">Recent on this browser</h2>
+            <button
+              type="button"
+              onClick={onClearRecent}
+              className="h-11 px-1 text-sm text-ink-muted transition-colors duration-150 hover:text-ink"
+            >
+              Clear
+            </button>
+          </div>
           <ul className="mt-2 flex flex-wrap gap-2">
             {recent.map((item) => (
               <li key={item.at + item.q}>

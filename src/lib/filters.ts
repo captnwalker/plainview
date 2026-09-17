@@ -45,8 +45,15 @@ export function compactSearch(query: SearchQuery): SearchQuery {
   return next;
 }
 
-export function hasLocationFilters(filters: SearchFilters): boolean {
-  return Boolean(filters.city || filters.state);
+export function hasActiveFilters(filters: SearchFilters): boolean {
+  return Boolean(
+    filters.ageMin ||
+      filters.ageMax ||
+      filters.city ||
+      filters.state ||
+      filters.username ||
+      (filters.country && filters.country !== "United States"),
+  );
 }
 
 export function ageRangeLabel(filters: SearchFilters): string | null {
