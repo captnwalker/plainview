@@ -3,7 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { ChevronDown, Search } from "lucide-react";
 import { classifyQuery } from "@/lib/classify.ts";
 import { compactSearch, EMPTY_FILTERS, hasActiveFilters, type SearchFilters } from "@/lib/filters.ts";
-import { COUNTRIES, US_STATES } from "@/lib/us-states.ts";
+import { US_STATES } from "@/lib/us-states.ts";
 import { cn } from "@/lib/cn.ts";
 
 const PLACEHOLDERS = [
@@ -126,39 +126,15 @@ export function SearchForm({
       </button>
 
       {filtersOpen ? (
-        <fieldset id={filterPanelId} className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+        <fieldset id={filterPanelId} className="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-3">
           <legend className="sr-only">Additional filters</legend>
-          <FilterField label="Age min" htmlFor={`${inputId}-ageMin`}>
-            <input
-              id={`${inputId}-ageMin`}
-              inputMode="numeric"
-              min={0}
-              max={120}
-              value={filters.ageMin}
-              onChange={(e) => setFilters((f) => ({ ...f, ageMin: e.target.value.replace(/[^\d]/g, "") }))}
-              className="filter-input"
-              placeholder="18"
-            />
-          </FilterField>
-          <FilterField label="Age max" htmlFor={`${inputId}-ageMax`}>
-            <input
-              id={`${inputId}-ageMax`}
-              inputMode="numeric"
-              min={0}
-              max={120}
-              value={filters.ageMax}
-              onChange={(e) => setFilters((f) => ({ ...f, ageMax: e.target.value.replace(/[^\d]/g, "") }))}
-              className="filter-input"
-              placeholder="65"
-            />
-          </FilterField>
           <FilterField label="City" htmlFor={`${inputId}-city`}>
             <input
               id={`${inputId}-city`}
               value={filters.city}
               onChange={(e) => setFilters((f) => ({ ...f, city: e.target.value }))}
               className="filter-input"
-              placeholder="Fort Myers"
+              placeholder="Miami"
               autoComplete="address-level2"
             />
           </FilterField>
@@ -173,20 +149,6 @@ export function SearchForm({
               {US_STATES.map((s) => (
                 <option key={s.code} value={s.code}>
                   {s.code}
-                </option>
-              ))}
-            </select>
-          </FilterField>
-          <FilterField label="Country" htmlFor={`${inputId}-country`}>
-            <select
-              id={`${inputId}-country`}
-              value={filters.country}
-              onChange={(e) => setFilters((f) => ({ ...f, country: e.target.value }))}
-              className="filter-input"
-            >
-              {COUNTRIES.map((c) => (
-                <option key={c} value={c}>
-                  {c}
                 </option>
               ))}
             </select>
