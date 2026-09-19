@@ -1,6 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="#111318"/>
-  <path d="M9 12V9h3M20 9h3v3M23 20v3h-3M12 23H9v-3" fill="none" stroke="#F2EEE6" stroke-width="2.25" stroke-linecap="square" stroke-linejoin="miter"/>
-  <circle cx="16" cy="16" r="6.6" fill="none" stroke="#2A4A7C" stroke-width="2.4"/>
-  <circle cx="16" cy="16" r="3.1" fill="none" stroke="#F2EEE6" stroke-width="1.7"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Plainview">
+  <title>Plainview</title>
+  <style>
+    .tile { fill: #f7f6f3; }
+    .p { fill: #2a4a7c; }
+    .v { fill: #6ea0d4; }
+    @media (prefers-color-scheme: dark) {
+      .tile { fill: #1c2028; }
+      .p { fill: #8aa4d4; }
+      .v { fill: #e7eef8; }
+    }
+  </style>
+  <rect class="tile" width="32" height="32" rx="7"/>
+  <path class="v" d="M15.2 5.6h11.6L20.2 26.4h-6.1L19.8 11.2z"/>
+  <path class="p" fill-rule="evenodd" d="M6.6 9.4c0-2.2 1.8-4 4.1-4h6.4c3.2 0 5.6 2.4 5.6 5.6 0 3.2-2.4 5.6-5.7 5.6h-4.2v8.8H9.2c-1.4 0-2.6-1.2-2.6-2.6V9.4zm5.2 1.5c0-.6.5-1.1 1.1-1.1h2.8c1.2 0 2 0.8 2 1.9s-.8 1.9-2 1.9h-2.8c-.6 0-1.1-.5-1.1-1.1v-1.6z"/>
 </svg>

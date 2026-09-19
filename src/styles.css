@@ -42,15 +42,15 @@
 }
 
 html.dark {
-  --pv-canvas: #111318;
-  --pv-elevated: #191c24;
+  --pv-canvas: #1c2028;
+  --pv-elevated: #262b35;
   --pv-ink: #f2eee6;
   --pv-muted: #b5b1a8;
   --pv-subtle: #8c887f;
   --pv-line: color-mix(in oklab, var(--pv-ink) 14%, transparent);
   --pv-line-strong: color-mix(in oklab, var(--pv-ink) 26%, transparent);
   --pv-accent: #8aa4d4;
-  --pv-accent-fg: #111318;
+  --pv-accent-fg: #1c2028;
   --pv-danger: #e08b8b;
   --pv-warn: #e0c08a;
   --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.35), 0 10px 28px rgb(0 0 0 / 0.28);
