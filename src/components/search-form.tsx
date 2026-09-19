@@ -11,7 +11,7 @@ const PLACEHOLDERS = [
   "941-555-0142",
   "name@example.com",
   "@handle",
-  "512 Maple Ave, Fort Myers, FL",
+  "512 Maple Ave, Atlanta, GA",
 ];
 
 type SearchFormProps = {
