@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as ToolsRouteImport } from './routes/tools'
+import { Route as RemoveRouteImport } from './routes/remove'
 import { Route as ApiLookupRouteImport } from './routes/api/lookup'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +42,11 @@ const ToolsRoute = ToolsRouteImport.update({
   path: '/tools',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RemoveRoute = RemoveRouteImport.update({
+  id: '/remove',
+  path: '/remove',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiLookupRoute = ApiLookupRouteImport.update({
   id: '/api/lookup',
   path: '/api/lookup',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/legal': typeof LegalRoute
   '/search': typeof SearchRoute
   '/tools': typeof ToolsRoute
+  '/remove': typeof RemoveRoute
   '/api/lookup': typeof ApiLookupRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/legal': typeof LegalRoute
   '/search': typeof SearchRoute
   '/tools': typeof ToolsRoute
+  '/remove': typeof RemoveRoute
   '/api/lookup': typeof ApiLookupRoute
 }
 export interface FileRoutesById {
@@ -70,13 +78,14 @@ export interface FileRoutesById {
   '/legal': typeof LegalRoute
   '/search': typeof SearchRoute
   '/tools': typeof ToolsRoute
+  '/remove': typeof RemoveRoute
   '/api/lookup': typeof ApiLookupRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/legal' | '/search' | '/tools' | '/api/lookup'
+  fullPaths: '/' | '/about' | '/legal' | '/search' | '/tools' | '/remove' | '/api/lookup'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/legal' | '/search' | '/tools' | '/api/lookup'
+  to: '/' | '/about' | '/legal' | '/search' | '/tools' | '/remove' | '/api/lookup'
   id:
     | '__root__'
     | '/'
@@ -84,6 +93,7 @@ export interface FileRouteTypes {
     | '/legal'
     | '/search'
     | '/tools'
+    | '/remove'
     | '/api/lookup'
   fileRoutesById: FileRoutesById
 }
@@ -93,6 +103,7 @@ export interface RootRouteChildren {
   LegalRoute: typeof LegalRoute
   SearchRoute: typeof SearchRoute
   ToolsRoute: typeof ToolsRoute
+  RemoveRoute: typeof RemoveRoute
   ApiLookupRoute: typeof ApiLookupRoute
 }
 
@@ -133,6 +144,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/remove': {
+      id: '/remove'
+      path: '/remove'
+      fullPath: '/remove'
+      preLoaderRoute: typeof RemoveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/lookup': {
       id: '/api/lookup'
       path: '/api/lookup'
@@ -149,6 +167,7 @@ const rootRouteChildren: RootRouteChildren = {
   LegalRoute: LegalRoute,
   SearchRoute: SearchRoute,
   ToolsRoute: ToolsRoute,
+  RemoveRoute: RemoveRoute,
   ApiLookupRoute: ApiLookupRoute,
 }
 export const routeTree = rootRouteImport

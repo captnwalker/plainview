@@ -17,7 +17,7 @@ platform contract lives in `AGENTS.md` and must not be replaced.
 - `npm run build` — production build
 - `npm run typecheck` — `tsc --noEmit`
 - `npm run lint` — ESLint
-- `npm test` — includes classifier + URL template unit tests
+- `npm test` — includes classifier + URL template + opt-out catalog unit tests
 
 ## Hard legal rules
 
@@ -32,6 +32,7 @@ platform contract lives in `AGENTS.md` and must not be replaced.
 - Do not scrape people-search, breach, or social HTML. No Puppeteer / stealth browsers.
 - Do not use copy that says “most accurate,” “verified identity,” “official background check,” or “safe to hire / rent.”
 - Footer + results banner + `/legal` must carry the required disclaimer substance.
+- `/remove` may only guide the user to official opt-out forms for their own listings. No auto-submit, no CAPTCHA solving, no authorized-agent flow, no “remove this person” on search results.
 
 ## Live sources (keyless only)
 
