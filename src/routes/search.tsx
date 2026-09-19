@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { DisclaimerBanner } from "@/components/disclaimer-banner.tsx";
 import { LiveCards } from "@/components/live-cards.tsx";
@@ -125,6 +125,13 @@ function SearchPage() {
         <h1 className="mt-1 font-serif text-3xl text-ink">{classified.normalized}</h1>
         <p className="mt-2 text-sm text-ink-muted">
           {classified.label}. Public links and a few keyless APIs — unverified, incomplete, not a report.
+        </p>
+        <p className="mt-2 text-sm text-ink-muted">
+          If these results are about you, use{" "}
+          <Link to="/remove" className="text-accent hover:underline">
+            Remove my listings
+          </Link>{" "}
+          to open official opt-out forms for your own rows. There is no control here to remove anyone else.
         </p>
       </header>
       <div className="mt-6">

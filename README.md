@@ -27,8 +27,9 @@ Other fictional examples:
 2. Rejects Social Security number shapes and stops.
 3. Fetches a short list of **no-key** public APIs from `/api/lookup` (Gravatar, GitHub, Wikidata, ip-api, Zippopotam.us, crt.sh, RDAP).
 4. Builds outbound URLs from `src/lib/tools.ts`. You leave Plainview to use them.
+5. `/remove` is a self-service guide to official people-search opt-out forms for **your own** listings only. Plainview does not submit those forms.
 
-Searches are not stored on a server. Last 10 queries and theme preference stay in this browser’s `localStorage` only.
+Searches are not stored on a server. Last 10 queries, theme preference, and the opt-out checklist stay in this browser’s `localStorage` only.
 
 ## Local development
 
@@ -50,14 +51,13 @@ npm run build
 
 TanStack Start + React + TypeScript + Tailwind CSS, deployed as Vercel serverless. No database and no auth.
 
-This repo uses TanStack Start rather than Next.js App Router so the existing Vite/Vercel adapter and live preview keep working. File routes still map to `/`, `/search`, `/about`, `/tools`, `/legal`, and `/api/lookup`.
+This repo uses TanStack Start rather than Next.js App Router so the existing Vite/Vercel adapter and live preview keep working. File routes still map to `/`, `/search`, `/about`, `/tools`, `/legal`, `/remove`, and `/api/lookup`.
 
 ## GitHub and Vercel
 
 Public repo: [github.com/captnwalker/plainview](https://github.com/captnwalker/plainview).
 
 On Vercel: Import that GitHub repo with **Continue with GitHub**. No environment variables are required for v1.
-
 
 ## Legal scope
 
