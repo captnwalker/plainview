@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { LEGAL_DISCLAIMER } from "@/lib/legal.ts";
+import { HOME_SCREEN_FOOTER, LEGAL_DISCLAIMER } from "@/lib/legal.ts";
 
 export function SiteFooter() {
   return (
@@ -21,6 +21,11 @@ export function SiteFooter() {
           </Link>
           <span className="text-ink-subtle">Not a consumer reporting agency.</span>
         </div>
+        <p className="text-xs text-ink-subtle">
+          <Link to="/about" hash="home-screen" className="hover:underline">
+            {HOME_SCREEN_FOOTER}
+          </Link>
+        </p>
       </div>
     </footer>
   );

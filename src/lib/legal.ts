@@ -8,3 +8,9 @@ export const APP_NAME = "Plainview";
 export const APP_TAGLINE = "What’s already public.";
 export const APP_ONE_LINE =
   "A public-records and OSINT launcher. Type a name, email, phone, username, address, domain, or IP. See a few keyless public-API snippets plus curated links to established tools.";
+
+/** Home Screen shortcut copy. About is the long form; the footer is one line that jumps there. */
+export const HOME_SCREEN_FOOTER =
+  "Add to Home Screen — a shortcut to this website. Safari on iPhone / iPad; browser menu on Android.";
+export const HOME_SCREEN_BLURB =
+  "You can save Plainview to your phone’s Home Screen. That is a shortcut to this website, not an App Store or Play Store app. On iPhone or iPad, open this site in Safari, tap Share, then Add to Home Screen. On Android, open the browser menu and choose Add to Home screen or Install app.";

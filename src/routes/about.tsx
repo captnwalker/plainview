@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { APP_ONE_LINE, APP_TAGLINE } from "@/lib/legal.ts";
+import { APP_ONE_LINE, APP_TAGLINE, HOME_SCREEN_BLURB } from "@/lib/legal.ts";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
@@ -48,6 +48,11 @@ function AboutPage() {
           </li>
           <li>Outbound tool URLs are built from a curated catalog. You leave Plainview to use them.</li>
         </ol>
+      </section>
+
+      <section id="home-screen" className="mt-10 scroll-mt-20 space-y-3 text-sm leading-relaxed">
+        <h2 className="font-serif text-2xl">On your phone</h2>
+        <p className="text-ink-muted">{HOME_SCREEN_BLURB}</p>
       </section>
 
       <section className="mt-10 space-y-3 text-sm leading-relaxed">
