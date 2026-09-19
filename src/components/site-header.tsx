@@ -7,6 +7,7 @@ const NAV = [
   { to: "/about", label: "About" },
   { to: "/tools", label: "Tools" },
   { to: "/legal", label: "Legal" },
+  { to: "/remove", label: "Remove my listings" },
 ] as const;
 
 export function SiteHeader({ minimal = false }: { minimal?: boolean }) {

@@ -16,6 +16,9 @@ export function SiteFooter() {
           <Link to="/legal" className="text-ink hover:underline">
             Legal
           </Link>
+          <Link to="/remove" className="text-ink hover:underline">
+            Remove my listings
+          </Link>
           <span className="text-ink-subtle">Not a consumer reporting agency.</span>
         </div>
       </div>

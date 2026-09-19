@@ -50,6 +50,18 @@ function AboutPage() {
         </ol>
       </section>
 
+      <section className="mt-10 space-y-3 text-sm leading-relaxed">
+        <h2 className="font-serif text-2xl">Removing your own listings</h2>
+        <p>
+          If a people-search site has a public opt-out,{" "}
+          <Link to="/remove" className="text-accent hover:underline">
+            Remove my listings
+          </Link>{" "}
+          points you at that site’s official form and keeps a checklist in this browser only. We do not
+          file the request for you, and we do not offer removal of anyone else’s row.
+        </p>
+      </section>
+
       <p className="mt-10 text-sm text-ink-muted">
         Read the <Link to="/legal" className="text-accent hover:underline">legal page</Link> and the{" "}
         <Link to="/tools" className="text-accent hover:underline">tools directory</Link> before you search.

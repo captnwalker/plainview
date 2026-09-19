@@ -49,9 +49,21 @@ function LegalPage() {
           <li>No leaked passwords, dumps, or Have I Been Pwned API results</li>
         </ul>
         <p className="text-ink-muted">
-          Optional last-10 search history and theme preference stay in this browser’s localStorage only
-          (<code className="text-ink">plainview-recent</code>, <code className="text-ink">plainview-theme</code>
-          ).
+          Optional last-10 search history, theme preference, and the opt-out checklist stay in this
+          browser’s localStorage only (<code className="text-ink">plainview-recent</code>,{" "}
+          <code className="text-ink">plainview-theme</code>,{" "}
+          <code className="text-ink">plainview-optout</code>). We do not store those on a server.
+        </p>
+      </section>
+
+      <section className="mt-10 space-y-4 text-sm leading-relaxed">
+        <h2 className="font-serif text-2xl">Remove my listings</h2>
+        <p>
+          The /remove page is a guide to official self-service opt-out forms on certain people-search
+          sites. It is only for requesting removal of <strong>your own</strong> listing. Plainview does
+          not submit those forms, solve CAPTCHAs, read your email, act as an authorized agent, or send
+          opt-out requests in anyone else’s name. Search results do not include a “remove this person”
+          control.
         </p>
       </section>
 
@@ -63,6 +75,7 @@ function LegalPage() {
           <li>PDF or dossier downloads</li>
           <li>Paywalls, “unlock full report,” or verified-identity claims</li>
           <li>SMTP or password-reset account enumeration from our servers</li>
+          <li>Automated opt-out submission or removal of anyone else’s listing</li>
         </ul>
       </section>
 
