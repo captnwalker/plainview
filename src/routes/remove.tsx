@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   CHECKLIST_STATUSES,
+  GOOGLE_RESULTS_ABOUT_YOU,
   OPT_OUT_BROKERS,
   OPT_OUT_NOT_IN_SCOPE,
   type ChecklistStatus,
@@ -97,6 +98,8 @@ function RemovePage() {
         ) : null}
       </section>
 
+      <GoogleSearchSection attested={attested} />
+
       <section className="mt-12">
         <h2 className="font-serif text-2xl">What this page cannot remove</h2>
         <ul className="mt-4 divide-y divide-line border-y border-line">
@@ -118,6 +121,71 @@ function RemovePage() {
         <Link to="/tools" className="text-accent hover:underline">Tools</Link>.
       </p>
     </main>
+  );
+}
+
+function GoogleSearchSection({ attested }: { attested: boolean }) {
+  return (
+    <section className="mt-12" aria-labelledby="google-heading">
+      <h2 id="google-heading" className="font-serif text-2xl">
+        Google Search
+      </h2>
+      <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+        Google can hide <strong>your</strong> phone number, home address, or email from Search results. That
+        does not delete the page. People-search sites above still need their own opt-out. News, government,
+        school, and some business pages often stay. A broker that relists you can put a snippet back later.
+      </p>
+      <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+        You must be signed into a Google account. Google’s own tool may also accept government ID numbers in
+        some countries. Do not type a Social Security number into Plainview — use Google’s form only.
+      </p>
+
+      <div className="mt-4 flex flex-wrap items-center gap-3">
+        {attested ? (
+          <a
+            href={GOOGLE_RESULTS_ABOUT_YOU.hubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-10 items-center rounded-md bg-accent px-3 text-sm font-medium text-accent-fg"
+          >
+            Open Results about you
+          </a>
+        ) : (
+          <span className="inline-flex h-10 items-center rounded-md border border-line px-3 text-sm text-ink-subtle">
+            Attest first to enable the link
+          </span>
+        )}
+        <a
+          href={GOOGLE_RESULTS_ABOUT_YOU.helpUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-ink-muted hover:underline"
+        >
+          Google help article
+        </a>
+      </div>
+
+      <div className="mt-6 space-y-3">
+        <details className="rounded-xl border border-line bg-canvas-elevated p-4">
+          <summary className="cursor-pointer font-medium">Use the Results about you dashboard</summary>
+          <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-ink-muted">
+            <li>Sign in and open the official hub (button above), or in the Google app tap your photo and choose Results about you.</li>
+            <li>Add the name, phone, address, and email that are actually yours and that you want watched. That is the tradeoff: Google uses those values to scan Search.</li>
+            <li>Review what it flags. Choose Request to remove on a result that is you. You can mark others as reviewed.</li>
+            <li>Track status in the same hub. Google emails the address on the account.</li>
+          </ol>
+        </details>
+        <details className="rounded-xl border border-line bg-canvas-elevated p-4">
+          <summary className="cursor-pointer font-medium">From a Google result you already found</summary>
+          <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-ink-muted">
+            <li>Stay signed in. Find the result that shows your contact info.</li>
+            <li>Open More (three dots) next to the title.</li>
+            <li>Choose Remove result, then the option that it shows your personal or contact info.</li>
+            <li>Finish Google’s prompts. If Remove result is missing, that page is usually ineligible (often news, government, school, or a business site).</li>
+          </ol>
+        </details>
+      </div>
+    </section>
   );
 }
 

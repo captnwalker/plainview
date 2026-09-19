@@ -27,7 +27,7 @@ Other fictional examples:
 2. Rejects Social Security number shapes and stops.
 3. Fetches a short list of **no-key** public APIs from `/api/lookup` (Gravatar, GitHub, Wikidata, ip-api, Zippopotam.us, crt.sh, RDAP).
 4. Builds outbound URLs from `src/lib/tools.ts`. You leave Plainview to use them.
-5. `/remove` is a self-service guide to official people-search opt-out forms for **your own** listings only. Plainview does not submit those forms.
+5. `/remove` is a self-service guide to official people-search opt-out forms for **your own** listings, plus Google’s Results about you tool. Plainview does not submit those forms. Hiding a Google snippet does not delete the source page.
 
 Searches are not stored on a server. Last 10 queries, theme preference, and the opt-out checklist stay in this browser’s `localStorage` only.
 

@@ -60,10 +60,11 @@ function LegalPage() {
         <h2 className="font-serif text-2xl">Remove my listings</h2>
         <p>
           The /remove page is a guide to official self-service opt-out forms on certain people-search
-          sites. It is only for requesting removal of <strong>your own</strong> listing. Plainview does
-          not submit those forms, solve CAPTCHAs, read your email, act as an authorized agent, or send
-          opt-out requests in anyone else’s name. Search results do not include a “remove this person”
-          control.
+          sites, plus Google’s own Results about you tool. It is only for requesting removal of{" "}
+          <strong>your own</strong> listing or Search snippets. Plainview does not submit those forms,
+          solve CAPTCHAs, read your email, act as an authorized agent, or send opt-out requests in anyone
+          else’s name. Search results do not include a “remove this person” control. Hiding a result in
+          Google Search does not delete the underlying page.
         </p>
       </section>
 

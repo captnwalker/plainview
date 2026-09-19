@@ -115,10 +115,16 @@ export const OPT_OUT_BROKERS: OptOutBroker[] = [
   },
 ];
 
+/** Official Google Search delisting hub. Not a source-page delete. */
+export const GOOGLE_RESULTS_ABOUT_YOU = {
+  hubUrl: "https://myactivity.google.com/results-about-you",
+  helpUrl: "https://support.google.com/websearch/answer/12719076",
+} as const;
+
 export const OPT_OUT_NOT_IN_SCOPE = [
   {
-    name: "Search engines (Google, DuckDuckGo, Bing)",
-    reason: "They index other sites. Use each engine’s own results-about-you tools if offered. That is not the same as deleting a broker row.",
+    name: "Bing, DuckDuckGo, and other search engines",
+    reason: "They have their own removal tools if they offer any. Hiding a snippet in Google Search is not the same as deleting a broker row or clearing every engine.",
   },
   {
     name: "Have I Been Pwned, Dehashed, Intelligence X",

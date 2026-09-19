@@ -9,6 +9,7 @@
 - Live sources: validation, Gravatar (email), GitHub (username), Wikidata (person name), ip-api (IP), Zippopotam.us (ZIP), crt.sh + RDAP (domain)
 - Pages: `/about`, `/tools`, `/legal`, `/remove`
 - `/remove` is a self-service guide to official people-search opt-out forms for the user’s own listings only (attestation required; localStorage checklist; no auto-submit; no “remove this person” on search results)
+- `/remove` also explains Google Results about you (official hub link; collapsed steps; Search delisting ≠ source delete)
 - `robots.txt` allow, MIT license, unit tests for classifier + URL builder + opt-out catalog
 - No database, no auth, no API keys, no server-side query logs
 - Public GitHub repo: https://github.com/captnwalker/plainview (`main`)

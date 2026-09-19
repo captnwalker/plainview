@@ -57,8 +57,9 @@ function AboutPage() {
           <Link to="/remove" className="text-accent hover:underline">
             Remove my listings
           </Link>{" "}
-          points you at that site’s official form and keeps a checklist in this browser only. We do not
-          file the request for you, and we do not offer removal of anyone else’s row.
+          points you at that site’s official form and at Google’s Results about you tool. We do not file
+          the request for you, and we do not offer removal of anyone else’s row. Hiding a snippet in Search
+          does not delete the source page.
         </p>
       </section>
 

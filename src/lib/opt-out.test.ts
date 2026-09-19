@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { OPT_OUT_BROKERS, OPT_OUT_NOT_IN_SCOPE } from "./opt-out.ts";
+import { GOOGLE_RESULTS_ABOUT_YOU, OPT_OUT_BROKERS, OPT_OUT_NOT_IN_SCOPE } from "./opt-out.ts";
 
 describe("opt-out catalog", () => {
   it("only lists https official destinations", () => {
@@ -24,5 +24,10 @@ describe("opt-out catalog", () => {
       assert.ok(item.name);
       assert.ok(item.reason.length > 20);
     }
+  });
+
+  it("points at Google's official Results about you hub", () => {
+    assert.match(GOOGLE_RESULTS_ABOUT_YOU.hubUrl, /^https:\/\/myactivity\.google\.com\/results-about-you/);
+    assert.match(GOOGLE_RESULTS_ABOUT_YOU.helpUrl, /^https:\/\/support\.google\.com\//);
   });
 });
